@@ -45,9 +45,9 @@
       height: 20px;
     }
 
+    /* Removed max-width limit */
     .envelope-container {
       width: 100%;
-      max-width: 1000px; /* make container wider */
       perspective: 1000px;
       margin: 0 auto 10px;
     }
@@ -59,7 +59,7 @@
       border-radius: 12px;
       box-shadow: 0 8px 20px rgba(0,0,0,0.15);
       position: relative;
-      min-height: 500px; /* give room for bigger images */
+      min-height: auto; /* removed fixed height */
     }
 
     .front, .card {
@@ -76,15 +76,9 @@
       background: #fff8f0;
     }
 
-    .front {
-      z-index: 2;
-      transform: rotateY(0deg);
-    }
-
     .front img,
     .card img {
-      width: 800px;   /* force images bigger */
-      max-width: 95%; /* but don’t break mobile screens */
+      width: 100%;     /* take full browser width */
       height: auto;
       object-fit: contain;
       display: block;
@@ -93,6 +87,11 @@
     .card {
       z-index: 1;
       transform: rotateY(180deg);
+    }
+
+    .front {
+      z-index: 2;
+      transform: rotateY(0deg);
     }
 
     .open .envelope {
@@ -130,31 +129,7 @@
     @media (max-width: 767px) {
       .front img,
       .card img {
-        width: 100%;  /* on mobile, keep full width */
-      }
-
-      .confirmation-text {
-        font-size: 26px;
-      }
-
-      .btn {
-        font-size: 14px;
-        padding: 10px 16px;
-      }
-
-      .button-group-bottom {
-        flex-direction: column;
-        gap: 10px;
-      }
-
-      .envelope {
-        box-shadow: none;
-        border-radius: 0;
-      }
-
-      .confirmation-section {
-        padding: 0 10px;
-        margin-top: 70px;
+        width: 100%;
       }
     }
 
@@ -218,6 +193,8 @@
 
 </body>
 </html>
+
+
 
 
 
