@@ -58,6 +58,7 @@
       flex-direction: column;
       align-items: center;
       margin-bottom: 20px;
+      min-height: 400px; /* asegurar espacio fijo para evitar saltos */
     }
 
     .envelope {
@@ -68,11 +69,11 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      transition: transform 1s ease;
+      /* eliminamos transform general */
     }
 
-    /* Animación de rebote solo para el sobre */
-    .bounce {
+    /* Animación visual solo para el sobre (sin mover layout) */
+    .bounce img {
       animation: bounceEnvelope 1.2s ease;
     }
 
@@ -109,6 +110,8 @@
       display: block;
       border-radius: 12px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      animation: none !important; /* eliminar cualquier animación */
+      transition: none !important;
     }
 
     .card {
@@ -163,11 +166,12 @@
       margin-bottom: 25px;
     }
 
+    /* Botones uno debajo del otro con más espacio */
     .button-group-bottom {
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 12px;
+      flex-direction: column;
+      align-items: center;
+      gap: 25px; /* más separación */
       margin-bottom: 20px;
     }
 
@@ -179,7 +183,7 @@
 </head>
 <body>
 
-  <!-- Imagen 1.Lauren -->
+  <!-- Imagen 1.Laurren -->
   <div class="envelope-container" id="envelopeContainer">
     <div class="envelope" id="envelope">
       <div class="front">
@@ -219,7 +223,7 @@
     const envelope = document.getElementById('envelope');
 
     openBtn.addEventListener('click', () => {
-      // Animación solo para el sobre
+      // Animación visual solo para el sobre
       envelope.classList.add('bounce');
 
       setTimeout(() => {
@@ -228,11 +232,17 @@
         welcomeText.classList.add('hidden');
         openBtn.style.display = 'none';
         envelope.classList.remove('bounce');
+
+        // Scroll suave a la sección de confirmación
         confirmationSection.scrollIntoView({ behavior: 'smooth' });
-      }, 1200); // esperar que termine la animación del sobre
+      }, 1200); 
     });
   </script>
 
 </body>
 </html>
+
+
+
+
 
