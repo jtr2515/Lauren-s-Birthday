@@ -47,8 +47,9 @@
 
   .envelope-container {
     position: relative;
-    width: 800px;   
-    height: 450px;
+    width: 90%;
+    max-width: 800px;
+    height: auto;
     perspective: 1500px;
     margin: 25px 0;
   }
@@ -63,6 +64,10 @@
     border-radius: 12px;
   }
 
+  .envelope:hover {
+    transform: translateY(-5px);
+  }
+
   .front {
     position: absolute;
     width: 100%;
@@ -75,7 +80,7 @@
 
   .front img {
     width: 100%;
-    height: 100%;
+    height: auto;
     object-fit: cover;
     transform: translateY(20px);
   }
@@ -83,7 +88,7 @@
   .card {
     position: absolute;
     width: 100%;
-    height: 100%;
+    height: auto;
     top: -20px;
     left: 0;
     opacity: 0;
@@ -95,8 +100,8 @@
   }
 
   .card img {
-    width: 80%;        
-    height: auto;      
+    width: 100%;
+    height: auto;
     object-fit: cover;
     border-radius: 12px;
     display: block;
@@ -134,11 +139,6 @@
   }
 
   @media (max-width: 900px) {
-    .envelope-container {
-      width: 90%;
-      height: auto;
-    }
-
     .card img {
       width: 95%;
     }
@@ -152,6 +152,12 @@
       font-size: 30px;
     }
   }
+
+  @media (max-width: 600px) {
+    .envelope-container {
+      width: 95%;
+    }
+  }
 </style>
 </head>
 <body>
@@ -162,11 +168,11 @@
   <div class="envelope-container">
     <div class="envelope">
       <div class="front">
-        <img src="1.Laurren.JPG" alt="Envelope Front"/>
+        <img src="./1.Laurren.JPG" alt="Envelope Front"/>
       </div>
     </div>
     <div class="card">
-      <img src="2.Lauren.JPG" alt="Invitation Card"/>
+      <img src="./2.Lauren.JPG" alt="Invitation Card"/>
     </div>
   </div>
 
@@ -177,36 +183,26 @@
       <a href="https://wa.me/18296714033" target="_blank" class="btn">
         <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" alt="WhatsApp"/> Confirmar
       </a>
-      <a href="https://www.google.com/maps?rlz=1C1UEAD_esDO998DO998&daddr=G6X5%2B6F5,+Santo+Domingo,+Dominican+Republic" 
+      <a href="https://www.google.com/maps?daddr=G6X5%2B6F5,+Santo+Domingo,+Dominican+Republic" 
          target="_blank" class="btn">
         <img src="https://img.icons8.com/color/48/000000/google-maps-new.png" alt="Google Maps"/> Ubicación
       </a>
     </div>
   </div>
 
-  <!-- Música de fondo -->
-  <audio id="invitationAudio" loop>
-    <source src="musica.mp3" type="audio/mpeg">
-    Tu navegador no soporta audio.
-  </audio>
-
   <script>
     const openBtn = document.getElementById('openBtn');
     const confirmationSection = document.getElementById('confirmationSection');
     const container = document.querySelector('.envelope-container');
-    const audio = document.getElementById('invitationAudio');
 
     openBtn.addEventListener('click', () => {
       container.classList.toggle('open');
       confirmationSection.classList.remove('hidden');
-
-      // reproducir música de fondo
-      audio.currentTime = 0;
-      audio.play();
     });
   </script>
 </body>
 </html>
+
 
 
 
