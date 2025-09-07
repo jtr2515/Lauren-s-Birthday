@@ -45,9 +45,9 @@
       height: 20px;
     }
 
-    /* Removed max-width limit */
     .envelope-container {
       width: 100%;
+      max-width: 900px; /* increased size for bigger images */
       perspective: 1000px;
       margin: 0 auto 10px;
     }
@@ -59,7 +59,7 @@
       border-radius: 12px;
       box-shadow: 0 8px 20px rgba(0,0,0,0.15);
       position: relative;
-      min-height: auto; /* removed fixed height */
+      min-height: 400px; /* taller to match larger images */
     }
 
     .front, .card {
@@ -76,9 +76,14 @@
       background: #fff8f0;
     }
 
+    .front {
+      z-index: 2;
+      transform: rotateY(0deg);
+    }
+
     .front img,
     .card img {
-      width: 100%;     /* take full browser width */
+      width: 100%;
       height: auto;
       object-fit: contain;
       display: block;
@@ -87,11 +92,6 @@
     .card {
       z-index: 1;
       transform: rotateY(180deg);
-    }
-
-    .front {
-      z-index: 2;
-      transform: rotateY(0deg);
     }
 
     .open .envelope {
@@ -127,9 +127,41 @@
     }
 
     @media (max-width: 767px) {
+      .confirmation-text {
+        font-size: 26px;
+      }
+
+      .btn {
+        font-size: 14px;
+        padding: 10px 16px;
+      }
+
+      .button-group-bottom {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .envelope-container {
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto 10px;
+      }
+
       .front img,
       .card img {
         width: 100%;
+        height: auto;
+        object-fit: contain;
+      }
+
+      .envelope {
+        box-shadow: none;
+        border-radius: 0;
+      }
+
+      .confirmation-section {
+        padding: 0 10px;
+        margin-top: 70px;
       }
     }
 
@@ -147,7 +179,7 @@
 </head>
 <body>
 
-  <!-- Imagen 1.Lauren -->
+  <!-- Imagen 1.Lauren más abajo -->
   <div class="envelope-container" id="envelopeContainer">
     <div class="envelope">
       <div class="front">
@@ -159,10 +191,10 @@
     </div>
   </div>
 
-  <!-- Botón -->
+  <!-- Botón justo debajo -->
   <button class="btn" id="openBtn">📩 Abrir Invitación</button>
 
-  <!-- Confirmación -->
+  <!-- Confirmación más separada -->
   <div class="confirmation-section" id="confirmationSection">
     <div class="confirmation-text">Confirma tu asistencia</div>
     <div class="button-group-bottom">
@@ -193,6 +225,8 @@
 
 </body>
 </html>
+
+
 
 
 
