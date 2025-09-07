@@ -47,7 +47,7 @@
 
     .envelope-container {
       width: 100%;
-      max-width: 900px; /* increased size for bigger images */
+      max-width: 1000px; /* make container wider */
       perspective: 1000px;
       margin: 0 auto 10px;
     }
@@ -59,7 +59,7 @@
       border-radius: 12px;
       box-shadow: 0 8px 20px rgba(0,0,0,0.15);
       position: relative;
-      min-height: 400px; /* taller to match larger images */
+      min-height: 500px; /* give room for bigger images */
     }
 
     .front, .card {
@@ -83,7 +83,8 @@
 
     .front img,
     .card img {
-      width: 100%;
+      width: 800px;   /* force images bigger */
+      max-width: 95%; /* but don’t break mobile screens */
       height: auto;
       object-fit: contain;
       display: block;
@@ -127,6 +128,11 @@
     }
 
     @media (max-width: 767px) {
+      .front img,
+      .card img {
+        width: 100%;  /* on mobile, keep full width */
+      }
+
       .confirmation-text {
         font-size: 26px;
       }
@@ -139,19 +145,6 @@
       .button-group-bottom {
         flex-direction: column;
         gap: 10px;
-      }
-
-      .envelope-container {
-        width: 100%;
-        max-width: 100%;
-        margin: 0 auto 10px;
-      }
-
-      .front img,
-      .card img {
-        width: 100%;
-        height: auto;
-        object-fit: contain;
       }
 
       .envelope {
@@ -179,7 +172,7 @@
 </head>
 <body>
 
-  <!-- Imagen 1.Lauren más abajo -->
+  <!-- Imagen 1.Lauren -->
   <div class="envelope-container" id="envelopeContainer">
     <div class="envelope">
       <div class="front">
@@ -191,10 +184,10 @@
     </div>
   </div>
 
-  <!-- Botón justo debajo -->
+  <!-- Botón -->
   <button class="btn" id="openBtn">📩 Abrir Invitación</button>
 
-  <!-- Confirmación más separada -->
+  <!-- Confirmación -->
   <div class="confirmation-section" id="confirmationSection">
     <div class="confirmation-text">Confirma tu asistencia</div>
     <div class="button-group-bottom">
@@ -225,6 +218,8 @@
 
 </body>
 </html>
+
+
 
 
 
