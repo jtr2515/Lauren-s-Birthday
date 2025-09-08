@@ -15,25 +15,37 @@
       justify-content: center;
       align-items: center;
       flex-direction: column;
-      height: 100vh;
+      min-height: 100vh;
     }
 
     .container {
       text-align: center;
       width: 90%;
       max-width: 400px;
+      position: relative;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 5px;
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
     }
 
     #invitationImage {
       width: 100%;
       max-width: 350px;
-      margin: 20px 0;
-      display: none; /* Se muestra después de abrir invitación */
+      border-radius: 20px;
+      margin: 0 auto;
+      display: none;
     }
 
     button {
       padding: 12px 20px;
-      margin: 10px 0;
+      margin: 8px 0;
       border: none;
       border-radius: 25px;
       background-color: #ff69b4;
@@ -41,6 +53,8 @@
       font-size: 18px;
       cursor: pointer;
       transition: background 0.3s;
+      width: 80%;
+      max-width: 300px;
     }
 
     button:hover {
@@ -50,6 +64,8 @@
     /* Botones ocultos inicialmente */
     #locationBtn, #confirmBtn {
       display: none;
+      position: relative; /* Para flotar justo debajo de la imagen */
+      top: -15px; /* Ajusta lo “más arriba” */
     }
   </style>
 </head>
@@ -77,16 +93,20 @@
     openBtn.addEventListener('click', () => {
       invitationImage.style.display = 'block';
       
-      // Mostrar botones un poco más arriba
+      // Mostrar botones justo debajo de la imagen
       locationBtn.style.display = 'block';
       confirmBtn.style.display = 'block';
 
-      // Opcional: desplazarse suavemente hacia la imagen
+      // Desplazamiento suave hacia la invitación
       invitationImage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+      // Opcional: deshabilitar el botón "Abrir invitación"
+      openBtn.style.display = 'none';
     });
   </script>
 </body>
 </html>
+
 
 
 
