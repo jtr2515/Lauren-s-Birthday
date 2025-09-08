@@ -7,62 +7,34 @@
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
   <style>
     :root{
-      --rosa:#ff69b4;
-      --rosa-osc:#e91e63; /* un poco más oscuro que el original */
-      --grad: linear-gradient(45deg, #e91e63, #ff70aa, #ffa6da);
-      --sombra: 0 10px 28px rgba(233,30,99,.45);
+      --rosa:#ff4c9a; /* rosado un poco más oscuro */
+      --grad: linear-gradient(45deg, #ff4c9a, #ff6abf, #ff88d0);
+      --sombra: 0 10px 28px rgba(255,76,154,.45);
+      --verde-azulado: #2ca3a3; /* color de los botones de la carta */
     }
-
-    *{box-sizing:border-box}
-
+    *{box-sizing:border-box;}
     body{
-      margin:0;
-      padding:10px 6px;
+      margin:0; padding:10px 6px;
       font-family:'Great Vibes',cursive;
       background:linear-gradient(135deg,#ffe4e1,#fff8f0);
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      min-height:100vh;
-      color:#c2185b;
+      display:flex; flex-direction:column; align-items:center;
+      min-height:100vh; color:#c2185b;
     }
 
+    /* CONTENEDOR SOBRE / TARJETA */
     .envelope-container{
-      width:100%;
-      max-width:420px;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      margin:10px auto 18px auto;
-      position:relative;
+      width:100%; max-width:420px; display:flex; flex-direction:column; align-items:center;
+      margin:10px auto 18px auto; position:relative;
     }
-
-    .envelope{
-      width:100%;
-      border-radius:14px;
-      box-shadow:0 8px 20px rgba(0,0,0,.12);
-      overflow:hidden;
-      background:#fff8f0;
-    }
-
-    .front, .card{
-      width:100%;
-      position:relative;
-    }
-
-    .front img, .card img{
-      width:100%;
-      height:450px;
-      object-fit:cover;
-      display:block;
-    }
-
+    .envelope{ width:100%; border-radius:14px; box-shadow:0 8px 20px rgba(0,0,0,.12); overflow:hidden; background:#fff8f0; }
+    .front, .card{ width:100%; position:relative; }
+    .front img, .card img{ width:100%; height:450px; object-fit:cover; display:block; }
     .card img{ animation:none!important; transition:none!important; }
-
     .card{ display:none; }
     .open .front{ display:none; }
     .open .card{ display:block; }
 
+    /* Rebote del sobre al abrir */
     .bounce img{ animation:bounceEnvelope 1.2s ease; }
     @keyframes bounceEnvelope{
       0%{transform:translateY(0) rotate(0)}
@@ -72,105 +44,65 @@
       100%{transform:translateY(0) rotate(0)}
     }
 
+    /* BOTÓN ABRIR */
     #openBtn{
       margin:36px 0 14px 0;
-      padding:16px 28px;
-      width:86%;
-      max-width:340px;
-      border:none;
-      border-radius:30px;
-      font-size:22px;
-      color:#fff;
-      cursor:pointer;
-      background-image:var(--grad);
-      box-shadow:var(--sombra);
+      padding:16px 28px; width:86%; max-width:340px;
+      border:none; border-radius:30px;
+      font-size:22px; color:#fff; cursor:pointer;
+      background-image:var(--grad); box-shadow:var(--sombra);
       transition:transform .15s ease, filter .25s ease;
     }
     #openBtn:hover{ filter:brightness(1.06) }
     #openBtn:active{ transform:scale(.98) }
 
-    .mensaje{
-      text-align:center;
-      color:#c2185b;
-      font-size:30px;
-      line-height:1.35;
-      margin:16px 8px 10px;
+    /* MENSAJE FESTIVO inicial debajo de la imagen */
+    .mensaje-inicial{
+      text-align:center; color:#c2185b;
+      font-size:28px; line-height:1.35;
+      margin:12px 8px;
     }
 
-    .mensaje-festiva{
-      text-align:center;
-      color:#c2185b;
-      font-size:32px;
-      font-weight:700;
-      margin:16px 8px 10px;
-    }
-
+    /* SECCIÓN CONFIRMACIÓN / BOTONES */
     .confirmation-section{
-      width:100%;
-      max-width:420px;
-      text-align:center;
-      display:none;
-      animation:fadeInUp .8s ease both;
-      margin-top:8px;
+      width:100%; max-width:420px; text-align:center;
+      display:none; animation:fadeInUp .8s ease both; margin-top:8px;
     }
     .confirmation-section.visible{ display:block; }
-
-    .confirmation-text{
-      font-size:30px;
-      margin:10px 0 8px 0;
-      color:#b0124a;
-    }
-
+    .confirmation-text{ font-size:30px; margin:10px 0 8px 0; color:#b0124a; }
     .button-group-bottom{
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      gap:18px;
-      margin:14px 0 18px;
-      width:100%;
+      display:flex; flex-direction:column; align-items:center;
+      gap:18px; margin:14px 0 18px; width:100%;
     }
 
+    /* BOTONES PRINCIPALES CON COLOR VERDE AZULADO */
     .btn{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      width:86%;
-      max-width:340px;
-      padding:18px 32px;
-      border:none;
-      border-radius:34px;
-      color:#fff;
-      text-decoration:none;
-      font-size:26px;
-      font-weight:700;
-      cursor:pointer;
-      background-image:var(--grad);
-      box-shadow:var(--sombra);
+      display:flex; align-items:center; justify-content:center; gap:10px;
+      width:86%; max-width:340px; padding:18px 32px;
+      border:none; border-radius:34px;
+      color:#fff; text-decoration:none;
+      font-size:26px; font-weight:700; cursor:pointer;
+      background-color:var(--verde-azulado);
+      box-shadow:0 10px 28px rgba(44,163,163,.45);
       transition:transform .12s ease, filter .25s ease, box-shadow .25s ease;
     }
-    .btn:hover{
-      filter:brightness(1.08);
-      box-shadow:0 14px 34px rgba(233,30,99,.55);
-    }
+    .btn:hover{ filter:brightness(1.08); box-shadow:0 14px 34px rgba(44,163,163,.55); }
     .btn:active{ transform:scale(.98) }
     .btn img{ width:30px; height:30px; }
 
-    @keyframes fadeInUp{
-      from{opacity:0; transform:translateY(18px)}
-      to{opacity:1; transform:translateY(0)}
-    }
+    @keyframes fadeInUp{ from{opacity:0; transform:translateY(18px)} to{opacity:1; transform:translateY(0)} }
 
+    /* RESPONSIVE */
     @media (max-width:480px){
       .front img, .card img{ height:320px; }
       #openBtn{ font-size:21px; padding:15px 26px; }
-      .mensaje{ font-size:28px; }
-      .mensaje-festiva{ font-size:30px; }
+      .mensaje-inicial{ font-size:26px; }
       .confirmation-text{ font-size:28px; }
       .btn{ font-size:24px; padding:16px 28px; }
       .btn img{ width:28px; height:28px; }
     }
 
+    /* Reducir animaciones si usuario prefiere */
     @media (prefers-reduced-motion: reduce){
       .bounce img{ animation:none !important; }
       .confirmation-section{ animation:none !important; }
@@ -179,44 +111,34 @@
   </style>
 </head>
 <body>
-
-  <!-- MENSAJE FESTIVO ANTES DE ABRIR -->
-  <div class="mensaje-festiva" id="mensajeFestiva">🎉🎂🥳✨ Happy Birthday to Lauren! 💖🎈🎊</div>
-
   <!-- SOBRE / TARJETA -->
   <div class="envelope-container" id="envelopeContainer">
     <div class="envelope bounce" id="envelope">
       <div class="front">
-        <img id="frontImg" src="./1.Lauren.JPG" alt="Sobre cerrado"
-             onerror="this.onerror=null; this.src='./1.Laurren.JPG';">
+        <img id="frontImg" src="./1.Lauren.JPG" alt="Sobre cerrado" onerror="this.onerror=null; this.src='./1.Laurren.JPG';">
       </div>
       <div class="card">
-        <img id="cardImg" src="./2.Lauren.JPG" alt="Tarjeta"
-             onerror="this.onerror=null; this.src='./2.Laurren.JPG';">
+        <img id="cardImg" src="./2.Lauren.JPG" alt="Tarjeta" onerror="this.onerror=null; this.src='./2.Laurren.JPG';">
       </div>
+    </div>
+    <!-- MENSAJE INICIAL -->
+    <div class="mensaje-inicial" id="mensajeInicial">
+      🎉🎂 Happy Birthday to Lauren! 💖🥳
     </div>
   </div>
 
   <!-- BOTÓN ABRIR INVITACIÓN -->
   <button id="openBtn">📩 Abrir invitación</button>
 
-  <!-- SECCIÓN MENSAJE + BOTONES -->
+  <!-- SECCIÓN CONFIRMACIÓN + BOTONES (aparece tras abrir) -->
   <div class="confirmation-section" id="confirmationSection">
-    <div class="mensaje">
-      🎉✨ ¡Estamos muy felices de que vengas a celebrar con <strong>Lauren</strong>! 🎂🎈<br/>
-      Tu presencia hará que este día sea aún más especial 💖🥳
-    </div>
-
     <div class="confirmation-text">Confirma tu asistencia</div>
-
     <div class="button-group-bottom">
       <a class="btn" id="confirmBtn" target="_blank">
-        <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" alt="WhatsApp">
-        Confirmar
+        <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" alt="WhatsApp"> Confirmar
       </a>
       <a class="btn" id="locationBtn" target="_blank">
-        <img src="https://img.icons8.com/color/48/000000/google-maps-new.png" alt="Google Maps">
-        Ubicación
+        <img src="https://img.icons8.com/color/48/000000/google-maps-new.png" alt="Google Maps"> Ubicación
       </a>
     </div>
   </div>
@@ -226,10 +148,9 @@
     const envelope = document.getElementById('envelope');
     const container = document.getElementById('envelopeContainer');
     const confirmationSection = document.getElementById('confirmationSection');
-    const mensajeFestiva = document.getElementById('mensajeFestiva');
-
     const confirmBtn = document.getElementById('confirmBtn');
     const locationBtn = document.getElementById('locationBtn');
+    const mensajeInicial = document.getElementById('mensajeInicial');
 
     // Configura enlaces dinámicos
     const telefono = '18296714033';
@@ -237,25 +158,22 @@
     confirmBtn.href = `https://wa.me/${telefono}?text=${mensaje}`;
     locationBtn.href = 'https://www.google.com/maps?daddr=G6X5%2B6F5,+Santo+Domingo,+Dominican+Republic';
 
+    // Abrir invitación
     openBtn.addEventListener('click', () => {
-      // Ocultar mensaje festivo
-      mensajeFestiva.style.display = 'none';
-
-      // Animación de rebote
       envelope.classList.add('bounce');
-
       setTimeout(() => {
         container.classList.add('open');
         confirmationSection.classList.add('visible');
         openBtn.style.display = 'none';
+        mensajeInicial.style.display = 'none'; // ocultar mensaje inicial
         envelope.classList.remove('bounce');
-
         confirmationSection.scrollIntoView({ behavior:'smooth', block:'center' });
       }, 1200);
     });
   </script>
 </body>
 </html>
+
 
 
 
