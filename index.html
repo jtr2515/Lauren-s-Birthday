@@ -7,19 +7,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
   <style>
     :root{
-      --rosa:#ff69b4;
-      --rosa-osc:#ff1493;
-      --grad: linear-gradient(45deg, #ff69b4, #ff8ecf, #ffa6da);
-      --sombra: 0 10px 28px rgba(255,105,180,.45);
+      --rosa:#ff1493; /* rosa más fuerte */
+      --sombra: 0 10px 28px rgba(255,20,147,.45);
     }
-
-    *{box-sizing:border-box}
 
     body{
       margin:0;
       padding:10px 6px;
       font-family:'Great Vibes',cursive;
-      background:linear-gradient(135deg,#ffe4e1,#fff8f0);
+      background:#fff8f0;
       display:flex;
       flex-direction:column;
       align-items:center;
@@ -27,7 +23,17 @@
       color:#c2185b;
     }
 
-    /* CONTENEDOR SOBRE / TARJETA */
+    /* Mensaje inicial antes de abrir */
+    .mensaje-inicial{
+      font-size:32px;
+      color:#ff1493;
+      text-align:center;
+      margin:20px 10px;
+    }
+
+    .hidden{ display:none; }
+
+    /* Contenedor del sobre */
     .envelope-container{
       width:100%;
       max-width:420px;
@@ -35,7 +41,6 @@
       flex-direction:column;
       align-items:center;
       margin:10px auto 18px auto;
-      position:relative;
     }
 
     .envelope{
@@ -43,42 +48,22 @@
       border-radius:14px;
       box-shadow:0 8px 20px rgba(0,0,0,.12);
       overflow:hidden;
-      background:#fff8f0;
-    }
-
-    .front, .card{
-      width:100%;
-      position:relative;
+      background:#fff;
     }
 
     .front img, .card img{
       width:100%;
-      height:450px;      /* Desktop/Tablet */
-      object-fit:cover;  /* Mantiene proporción sin deformar */
+      height:320px;     /* tamaño para móvil */
+      object-fit:cover;
       display:block;
     }
-
-    /* Evitar animaciones no deseadas en la imagen principal */
-    .card img{ animation:none!important; transition:none!important; }
-
-    /* Estado visible/invisible */
     .card{ display:none; }
     .open .front{ display:none; }
     .open .card{ display:block; }
 
-    /* Rebote del sobre al abrir */
-    .bounce img{ animation:bounceEnvelope 1.2s ease; }
-    @keyframes bounceEnvelope{
-      0%{transform:translateY(0) rotate(0)}
-      30%{transform:translateY(-18px) rotate(-4deg)}
-      50%{transform:translateY(0) rotate(4deg)}
-      70%{transform:translateY(-9px) rotate(-2deg)}
-      100%{transform:translateY(0) rotate(0)}
-    }
-
-    /* BOTÓN ABRIR */
+    /* Botón abrir invitación */
     #openBtn{
-      margin:36px 0 14px 0; /* lo deja más centrado visualmente */
+      margin:20px 0 14px 0;
       padding:16px 28px;
       width:86%;
       max-width:340px;
@@ -87,23 +72,23 @@
       font-size:22px;
       color:#fff;
       cursor:pointer;
-      background-image:var(--grad);
+      background-color:var(--rosa);
       box-shadow:var(--sombra);
       transition:transform .15s ease, filter .25s ease;
     }
-    #openBtn:hover{ filter:brightness(1.06) }
+    #openBtn:hover{ filter:brightness(1.08) }
     #openBtn:active{ transform:scale(.98) }
 
-    /* MENSAJE FESTIVO */
+    /* Mensaje después de abrir */
     .mensaje{
       text-align:center;
       color:#c2185b;
-      font-size:30px;        /* Grande y legible */
+      font-size:28px;
       line-height:1.35;
-      margin:16px 8px 10px;
+      margin:18px 8px;
     }
 
-    /* SECCIÓN CONFIRMACIÓN / BOTONES */
+    /* Sección de confirmación */
     .confirmation-section{
       width:100%;
       max-width:420px;
@@ -115,8 +100,8 @@
     .confirmation-section.visible{ display:block; }
 
     .confirmation-text{
-      font-size:30px;
-      margin:10px 0 8px 0;
+      font-size:28px;
+      margin:10px 0 12px 0;
       color:#b0124a;
     }
 
@@ -124,12 +109,12 @@
       display:flex;
       flex-direction:column;
       align-items:center;
-      gap:18px;             /* separación entre botones */
+      gap:18px;
       margin:14px 0 18px;
       width:100%;
     }
 
-    /* BOTONES PRINCIPALES CON BRILLO/GRADIENTE */
+    /* Botones principales */
     .btn{
       display:flex;
       align-items:center;
@@ -142,86 +127,66 @@
       border-radius:34px;
       color:#fff;
       text-decoration:none;
-      font-size:26px;         /* LETRAS GRANDES */
+      font-size:24px;
       font-weight:700;
       cursor:pointer;
-      background-image:var(--grad);
+      background-color:var(--rosa);
       box-shadow:var(--sombra);
-      transition:transform .12s ease, filter .25s ease, box-shadow .25s ease;
+      transition:transform .12s ease, filter .25s ease;
     }
-    .btn:hover{
-      filter:brightness(1.08);
-      box-shadow:0 14px 34px rgba(255,105,180,.55);
-    }
+    .btn:hover{ filter:brightness(1.1); }
     .btn:active{ transform:scale(.98) }
-    .btn img{ width:30px; height:30px; }
+    .btn img{ width:28px; height:28px; }
 
     @keyframes fadeInUp{
       from{opacity:0; transform:translateY(18px)}
       to{opacity:1; transform:translateY(0)}
     }
-
-    /* RESPONSIVE: móvil */
-    @media (max-width:480px){
-      .front img, .card img{ height:320px; }   /* más contenido visible, mejor proporción */
-      #openBtn{ font-size:21px; padding:15px 26px; }
-      .mensaje{ font-size:28px; }
-      .confirmation-text{ font-size:28px; }
-      .btn{ font-size:24px; padding:16px 28px; }
-      .btn img{ width:28px; height:28px; }
-    }
-
-    /* Accesibilidad: si el usuario prefiere menos movimiento */
-    @media (prefers-reduced-motion: reduce){
-      .bounce img{ animation:none !important; }
-      .confirmation-section{ animation:none !important; }
-      html{ scroll-behavior:auto; }
-    }
   </style>
 </head>
 <body>
 
-  <!-- SOBRE / TARJETA -->
+  <!-- Mensaje inicial -->
+  <div id="mensajeInicial" class="mensaje-inicial">
+    🎂 Happy Birthday to Lauren 🎉
+  </div>
+
+  <!-- Sobre / tarjeta -->
   <div class="envelope-container" id="envelopeContainer">
-    <div class="envelope bounce" id="envelope">
+    <div class="envelope" id="envelope">
       <div class="front">
-        <!-- Intenta 1.Lauren.JPG y si no existe usa 1.Laurren.JPG -->
-        <img id="frontImg" src="./1.Lauren.JPG" alt="Sobre cerrado"
+        <img src="./1.Lauren.JPG" alt="Sobre cerrado"
              onerror="this.onerror=null; this.src='./1.Laurren.JPG';">
       </div>
       <div class="card">
-        <!-- Intenta 2.Lauren.JPG y si falla prueba 2.Laurren.JPG -->
-        <img id="cardImg" src="./2.Lauren.JPG" alt="Tarjeta"
+        <img src="./2.Lauren.JPG" alt="Tarjeta"
              onerror="this.onerror=null; this.src='./2.Laurren.JPG';">
       </div>
     </div>
   </div>
 
-  <!-- BOTÓN ABRIR INVITACIÓN -->
+  <!-- Botón abrir -->
   <button id="openBtn">📩 Abrir invitación</button>
 
-  <!-- SECCIÓN MENSAJE + BOTONES (aparece tras abrir) -->
+  <!-- Contenido al abrir -->
   <div class="confirmation-section" id="confirmationSection">
     <div class="mensaje">
       🎉✨ ¡Estamos muy felices de que vengas a celebrar con <strong>Lauren</strong>! 🎂🎈<br/>
+      📅 <strong>Sábado 21 de Septiembre, 2025</strong><br/>
+      🕒 <strong>6:00 PM</strong><br/>
       Tu presencia hará que este día sea aún más especial 💖🥳
     </div>
 
     <div class="confirmation-text">Confirma tu asistencia</div>
 
     <div class="button-group-bottom">
-      <!-- CONFIRMAR con mensaje pre-escrito en WhatsApp -->
-      <a class="btn"
-         id="confirmBtn"
-         target="_blank">
+      <!-- Confirmar -->
+      <a class="btn" id="confirmBtn" target="_blank">
         <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" alt="WhatsApp">
         Confirmar
       </a>
-
-      <!-- UBICACIÓN (Google Maps) -->
-      <a class="btn"
-         id="locationBtn"
-         target="_blank">
+      <!-- Ubicación -->
+      <a class="btn" id="locationBtn" target="_blank">
         <img src="https://img.icons8.com/color/48/000000/google-maps-new.png" alt="Google Maps">
         Ubicación
       </a>
@@ -230,43 +195,31 @@
 
   <script>
     const openBtn = document.getElementById('openBtn');
-    const envelope = document.getElementById('envelope');
-    const container = document.getElementById('envelopeContainer');
+    const envelope = document.getElementById('envelopeContainer');
     const confirmationSection = document.getElementById('confirmationSection');
+    const mensajeInicial = document.getElementById('mensajeInicial');
 
     const confirmBtn = document.getElementById('confirmBtn');
     const locationBtn = document.getElementById('locationBtn');
 
-    // Configura enlaces dinámicos (WhatsApp con mensaje y Google Maps)
-    const telefono = '18296714033'; // tu número (puedes cambiarlo)
-    const mensaje = encodeURIComponent('¡Yo iré a celebrar con Lauren! 🎉');
+    // WhatsApp con mensaje pre-escrito
+    const telefono = '18296714033'; // Cambia al tuyo
+    const mensaje = encodeURIComponent('¡Yo iré a celebrar con Lauren el 21 de Septiembre a las 6:00 PM! 🎉');
     confirmBtn.href = `https://wa.me/${telefono}?text=${mensaje}`;
 
-    // Ubicación (ajusta si deseas otra)
+    // Ubicación Google Maps
     locationBtn.href = 'https://www.google.com/maps?daddr=G6X5%2B6F5,+Santo+Domingo,+Dominican+Republic';
 
     // Abrir invitación
     openBtn.addEventListener('click', () => {
-      // Animación de rebote breve
-      envelope.classList.add('bounce');
-
-      // Cambia a la tarjeta y muestra botones/mensaje
-      setTimeout(() => {
-        container.classList.add('open');              // oculta front y muestra card
-        confirmationSection.classList.add('visible'); // aparece el mensaje y botones
-        openBtn.style.display = 'none';
-        envelope.classList.remove('bounce');
-
-        // Desplaza suavemente a la sección de confirmación
-        confirmationSection.scrollIntoView({ behavior:'smooth', block:'center' });
-      }, 1200);
+      envelope.classList.add('open');
+      confirmationSection.classList.add('visible');
+      openBtn.style.display = 'none';
+      mensajeInicial.style.display = 'none';
     });
   </script>
 </body>
 </html>
-
-
-
 
 
 
