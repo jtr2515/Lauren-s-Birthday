@@ -35,12 +35,16 @@
       margin-bottom: 20px;
     }
 
-    #invitationImage {
+    /* Imagen inicial y principal */
+    #coverImage, #invitationImage {
       width: 100%;
-      max-width: 350px;
       border-radius: 20px;
-      margin: 0 auto;
+      margin: 0 auto 20px auto;
       display: none;
+    }
+
+    #invitationImage {
+      max-width: 100%;
     }
 
     button {
@@ -64,8 +68,8 @@
     /* Botones ocultos inicialmente */
     #locationBtn, #confirmBtn {
       display: none;
-      position: relative; /* Para flotar justo debajo de la imagen */
-      top: -15px; /* Ajusta lo “más arriba” */
+      position: relative;
+      top: -10px; /* un poco más arriba de la imagen */
     }
   </style>
 </head>
@@ -73,39 +77,61 @@
   <div class="container">
     <h1>🎉 Cumpleaños de Lauren 🎉</h1>
     <p>¡Estás invitado a celebrar con nosotros!</p>
-    
+
+    <!-- Botón para abrir invitación -->
     <button id="openBtn">Abrir invitación</button>
 
-    <!-- Imagen de la invitación -->
-    <img src="2.Lauren.JPG" alt="Lauren" id="invitationImage">
+    <!-- Imagen inicial tipo portada -->
+    <img src="1.Lauren.JPG" alt="Lauren Portada" id="coverImage">
 
-    <!-- Botones que aparecen después de abrir -->
+    <!-- Imagen principal de invitación -->
+    <img src="2.Lauren.JPG" alt="Lauren Invitación" id="invitationImage">
+
+    <!-- Botones que aparecen después -->
     <button id="locationBtn">📍 Ver Ubicación</button>
     <button id="confirmBtn">✅ Confirmar Asistencia</button>
   </div>
 
   <script>
     const openBtn = document.getElementById('openBtn');
+    const coverImage = document.getElementById('coverImage');
     const invitationImage = document.getElementById('invitationImage');
     const locationBtn = document.getElementById('locationBtn');
     const confirmBtn = document.getElementById('confirmBtn');
 
     openBtn.addEventListener('click', () => {
+      // Mostrar portada y principal
+      coverImage.style.display = 'block';
       invitationImage.style.display = 'block';
-      
-      // Mostrar botones justo debajo de la imagen
+
+      // Mostrar botones
       locationBtn.style.display = 'block';
       confirmBtn.style.display = 'block';
 
-      // Desplazamiento suave hacia la invitación
-      invitationImage.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
-      // Opcional: deshabilitar el botón "Abrir invitación"
+      // Ocultar botón abrir
       openBtn.style.display = 'none';
+
+      // Desplazamiento suave a la invitación
+      invitationImage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+
+    // Acción del botón ubicación
+    locationBtn.addEventListener('click', () => {
+      // Reemplaza el link con la ubicación de tu fiesta
+      window.open('https://www.google.com/maps/place/Tu+Ubicacion', '_blank');
+    });
+
+    // Acción del botón confirmar
+    confirmBtn.addEventListener('click', () => {
+      alert('¡Gracias! Tu asistencia ha sido confirmada 🎉');
+      // Aquí podrías redirigir a un formulario si quieres
+      // window.location.href = 'https://tuformulario.com';
     });
   </script>
 </body>
 </html>
+
+
 
 
 
