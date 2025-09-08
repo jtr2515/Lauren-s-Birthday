@@ -6,7 +6,6 @@
   <title>Invitación Cumpleaños Lauren</title>
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
   <style>
-    /* Body estilo IG vertical */
     body {
       margin: 0;
       padding: 0;
@@ -19,7 +18,6 @@
       overflow-x: hidden;
     }
 
-    /* Contenedor vertical tipo stories */
     .story-container {
       width: 100%;
       max-width: 420px;
@@ -32,6 +30,7 @@
       align-items: center;
       position: relative;
       box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+      padding-top: 15px; 
     }
 
     .envelope-container {
@@ -39,7 +38,7 @@
       flex: 1;
       display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: flex-start;
       position: relative;
       padding: 10px;
     }
@@ -89,7 +88,6 @@
       display: block;
     }
 
-    /* Animación bounce */
     .bounce img {
       animation: bounceEnvelope 1.2s ease;
     }
@@ -102,9 +100,7 @@
       100% { transform: translateY(0) rotate(0deg); }
     }
 
-    /* Botón tipo IG flotante */
     .btn {
-      position: relative;
       background: #fff;
       border: 2px solid #f4a7b9;
       padding: 12px 20px;
@@ -119,6 +115,7 @@
       text-decoration: none;
       transition: all 0.3s ease;
       z-index: 10;
+      margin-top: 10px;
     }
 
     .btn:hover {
@@ -136,15 +133,14 @@
       height: 20px;
     }
 
-    /* Texto estilo IG */
     .welcome-text {
       font-size: 28px;
       font-family: 'Great Vibes', cursive;
       color: #e06f8b;
-      margin: 10px 0;
       text-align: center;
       transition: opacity 0.5s ease;
       padding: 0 10px;
+      margin-bottom: 10px;
     }
 
     .welcome-text.hidden {
@@ -152,14 +148,12 @@
       display: none;
     }
 
-    /* Confirmación tipo stories */
     .confirmation-section {
       width: 90%;
       text-align: center;
-      display: none;
       margin-top: 15px;
       animation: fadeInUp 1s ease;
-      display: flex;
+      display: none; /* Oculto hasta abrir */
       flex-direction: column;
       gap: 15px;
       align-items: center;
@@ -180,7 +174,6 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Ajustes para móviles tipo IG */
     @media screen and (max-width: 480px) {
       .welcome-text, .confirmation-text {
         font-size: 22px;
@@ -192,7 +185,7 @@
       }
 
       .envelope-container {
-        min-height: 60%;
+        min-height: 50%; 
       }
     }
   </style>
@@ -200,7 +193,6 @@
 <body>
   <div class="story-container">
 
-    <!-- Imagen 1.Laurren -->
     <div class="envelope-container" id="envelopeContainer">
       <div class="envelope" id="envelope">
         <div class="front">
@@ -212,13 +204,13 @@
       </div>
     </div>
 
+    <!-- Texto bonito arriba del botón -->
+    <div class="welcome-text" id="welcomeText">¡Estamos muy felices de que vengas a celebrar con nosotros!</div>
+
     <!-- Botón más arriba -->
     <button class="btn" id="openBtn">📩 Abrir Invitación</button>
 
-    <!-- Texto bonito debajo del botón -->
-    <div class="welcome-text" id="welcomeText">¡Estamos muy felices de que vengas a celebrar con nosotros!</div>
-
-    <!-- Confirmación -->
+    <!-- Confirmación solo aparece después -->
     <div class="confirmation-section" id="confirmationSection">
       <div class="confirmation-text">Confirma tu asistencia</div>
       <a href="https://wa.me/18296714033" target="_blank" class="btn">
@@ -244,22 +236,17 @@
 
       setTimeout(() => {
         container.classList.add('open');
-        confirmationSection.classList.add('visible');
+        confirmationSection.classList.add('visible'); // Botones aparecen
         welcomeText.classList.add('hidden');
         openBtn.style.display = 'none';
         envelope.classList.remove('bounce');
 
-        // Scroll suave
         confirmationSection.scrollIntoView({ behavior: 'smooth' });
       }, 1200);
     });
   </script>
 </body>
 </html>
-
-
-
-
 
 
 
