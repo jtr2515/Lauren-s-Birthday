@@ -64,7 +64,7 @@
 
     .front img, .card img {
       width: 100%;
-      height: 450px; /* altura desktop ajustada */
+      height: 450px; /* desktop */
       object-fit: cover;
       display: block;
       border-radius: 12px;
@@ -95,7 +95,7 @@
       border-radius: 25px;
       background-color: #ff69b4;
       color: white;
-      font-size: 20px;
+      font-size: 22px;
       cursor: pointer;
       transition: background 0.3s;
       width: 80%;
@@ -142,26 +142,27 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 15px;
+      gap: 18px;
       margin-bottom: 10px;
     }
 
     .btn {
-      padding: 16px 28px;
+      padding: 18px 32px;
       border: none;
-      border-radius: 25px;
+      border-radius: 30px;
       background-color: #ff69b4;
       color: white;
-      font-size: 22px; /* letras más grandes */
+      font-size: 26px; /* letras más grandes */
+      font-weight: bold;
       cursor: pointer;
       transition: background 0.3s;
-      width: 80%;
-      max-width: 300px;
+      width: 85%;
+      max-width: 320px;
       text-decoration: none;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
+      gap: 10px;
     }
 
     .btn:hover {
@@ -169,8 +170,8 @@
     }
 
     .btn img {
-      width: 26px;
-      height: 26px;
+      width: 30px;
+      height: 30px;
     }
 
     @keyframes fadeInUp {
@@ -180,7 +181,7 @@
 
     @media screen and (max-width: 480px) {
       .front img, .card img {
-        height: 320px; /* altura móvil ajustada para proporción correcta */
+        height: 320px; /* móvil proporcionado */
       }
 
       .welcome-text, .confirmation-text {
@@ -188,8 +189,13 @@
       }
 
       .btn {
-        font-size: 20px; /* letras grandes en móviles */
-        padding: 14px 24px;
+        font-size: 24px; /* más grandes en móvil también */
+        padding: 16px 28px;
+      }
+
+      .btn img {
+        width: 28px;
+        height: 28px;
       }
 
       .envelope-container {
@@ -257,8 +263,6 @@
 
 </body>
 </html>
-
-
 
 
 
