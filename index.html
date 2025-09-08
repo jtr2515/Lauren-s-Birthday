@@ -50,15 +50,14 @@
       height: 20px;
     }
 
-    /* Contenedor del sobre */
     .envelope-container {
       width: 100%;
-      max-width: 900px;
+      max-width: 600px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin-bottom: 20px;
-      min-height: 400px; /* asegurar espacio fijo para evitar saltos */
+      margin-bottom: 15px;
+      min-height: 350px; /* espacio fijo */
     }
 
     .envelope {
@@ -69,10 +68,8 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      /* eliminamos transform general */
     }
 
-    /* Animación visual solo para el sobre (sin mover layout) */
     .bounce img {
       animation: bounceEnvelope 1.2s ease;
     }
@@ -96,7 +93,7 @@
       background: #fff8f0;
     }
 
-    .front img {
+    .front img, .card img {
       width: 100%;
       height: auto;
       display: block;
@@ -105,12 +102,7 @@
     }
 
     .card img {
-      width: 100%;
-      height: auto;
-      display: block;
-      border-radius: 12px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-      animation: none !important; /* eliminar cualquier animación */
+      animation: none !important;
       transition: none !important;
     }
 
@@ -126,17 +118,15 @@
       display: block;
     }
 
-    /* Botón más abajo */
     #openBtn {
-      margin: 60px 0;
+      margin: 20px 0; /* más arriba */
     }
 
-    /* Texto bonito debajo del botón */
     .welcome-text {
-      font-size: 32px;
+      font-size: 28px;
       color: #e06f8b;
       font-family: 'Great Vibes', cursive;
-      margin: 20px 0 15px 0;
+      margin: 15px 0 10px 0;
       text-align: center;
       transition: opacity 0.5s ease;
     }
@@ -148,10 +138,10 @@
 
     .confirmation-section {
       width: 100%;
-      max-width: 600px;
+      max-width: 400px;
       text-align: center;
       display: none;
-      margin-top: 20px;
+      margin-top: 15px;
       animation: fadeInUp 1s ease;
     }
 
@@ -160,24 +150,39 @@
     }
 
     .confirmation-text {
-      font-size: 32px;
+      font-size: 28px;
       font-family: 'Great Vibes', cursive;
       color: #c2185b;
-      margin-bottom: 25px;
+      margin-bottom: 15px;
     }
 
-    /* Botones uno debajo del otro con más espacio */
     .button-group-bottom {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 25px; /* más separación */
-      margin-bottom: 20px;
+      gap: 15px; /* menos separación */
+      margin-bottom: 10px; /* más arriba */
     }
 
     @keyframes fadeInUp {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Ajustes para móviles */
+    @media screen and (max-width: 480px) {
+      .welcome-text, .confirmation-text {
+        font-size: 24px;
+      }
+
+      .btn {
+        font-size: 14px;
+        padding: 10px 16px;
+      }
+
+      .envelope-container {
+        min-height: 300px;
+      }
     }
   </style>
 </head>
@@ -195,7 +200,7 @@
     </div>
   </div>
 
-  <!-- Botón colocado más abajo -->
+  <!-- Botón más arriba -->
   <button class="btn" id="openBtn">📩 Abrir Invitación</button>
 
   <!-- Texto bonito debajo del botón -->
@@ -223,24 +228,25 @@
     const envelope = document.getElementById('envelope');
 
     openBtn.addEventListener('click', () => {
-      // Animación visual solo para el sobre
       envelope.classList.add('bounce');
 
       setTimeout(() => {
-        container.classList.add('open'); // La tarjeta aparece estática
+        container.classList.add('open');
         confirmationSection.classList.add('visible');
         welcomeText.classList.add('hidden');
         openBtn.style.display = 'none';
         envelope.classList.remove('bounce');
 
-        // Scroll suave a la sección de confirmación
+        // Scroll suave
         confirmationSection.scrollIntoView({ behavior: 'smooth' });
-      }, 1200); 
+      }, 1200);
     });
   </script>
 
 </body>
 </html>
+
+
 
 
 
