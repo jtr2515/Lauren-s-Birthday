@@ -6,86 +6,57 @@
   <title>Invitación Cumpleaños Lauren</title>
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
   <style>
+    /* Body estilo IG vertical */
     body {
       margin: 0;
-      padding: 10px 5px;
+      padding: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: linear-gradient(135deg, #fce4ec, #fff8f0);
       display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Contenedor vertical tipo stories */
+    .story-container {
+      width: 100%;
+      max-width: 420px;
+      height: 90vh;
+      background: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+      display: flex;
       flex-direction: column;
       align-items: center;
-      min-height: 100vh;
-    }
-
-    .btn {
-      background: #fff;
-      border: 2px solid #f4a7b9;
-      padding: 12px 20px;
-      border-radius: 10px;
-      cursor: pointer;
-      font-size: 16px;
-      color: #e06f8b;
-      font-weight: bold;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      z-index: 10;
       position: relative;
-    }
-
-    .btn:hover {
-      background: #fce4ec;
-      border-color: #e06f8b;
-      transform: scale(1.05);
-    }
-
-    .btn:active {
-      transform: scale(0.95);
-    }
-
-    .btn img {
-      width: 20px;
-      height: 20px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
     }
 
     .envelope-container {
       width: 100%;
-      max-width: 600px;
+      flex: 1;
       display: flex;
-      flex-direction: column;
+      justify-content: center;
       align-items: center;
-      margin-bottom: 15px;
-      min-height: 350px; /* espacio fijo */
+      position: relative;
+      padding: 10px;
     }
 
     .envelope {
       width: 100%;
-      border-radius: 12px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-      position: relative;
+      border-radius: 15px;
       display: flex;
       flex-direction: column;
       align-items: center;
-    }
-
-    .bounce img {
-      animation: bounceEnvelope 1.2s ease;
-    }
-
-    @keyframes bounceEnvelope {
-      0% { transform: translateY(0) rotate(0deg); }
-      30% { transform: translateY(-20px) rotate(-4deg); }
-      50% { transform: translateY(0) rotate(4deg); }
-      70% { transform: translateY(-10px) rotate(-2deg); }
-      100% { transform: translateY(0) rotate(0deg); }
+      position: relative;
     }
 
     .front, .card {
       position: relative;
       width: 100%;
-      border-radius: 12px;
+      border-radius: 15px;
       overflow: hidden;
       display: flex;
       justify-content: center;
@@ -97,7 +68,7 @@
       width: 100%;
       height: auto;
       display: block;
-      border-radius: 12px;
+      border-radius: 15px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     }
 
@@ -118,17 +89,62 @@
       display: block;
     }
 
-    #openBtn {
-      margin: 20px 0; /* más arriba */
+    /* Animación bounce */
+    .bounce img {
+      animation: bounceEnvelope 1.2s ease;
     }
 
+    @keyframes bounceEnvelope {
+      0% { transform: translateY(0) rotate(0deg); }
+      30% { transform: translateY(-20px) rotate(-4deg); }
+      50% { transform: translateY(0) rotate(4deg); }
+      70% { transform: translateY(-10px) rotate(-2deg); }
+      100% { transform: translateY(0) rotate(0deg); }
+    }
+
+    /* Botón tipo IG flotante */
+    .btn {
+      position: relative;
+      background: #fff;
+      border: 2px solid #f4a7b9;
+      padding: 12px 20px;
+      border-radius: 50px;
+      cursor: pointer;
+      font-size: 16px;
+      color: #e06f8b;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      z-index: 10;
+    }
+
+    .btn:hover {
+      background: #fce4ec;
+      border-color: #e06f8b;
+      transform: scale(1.05);
+    }
+
+    .btn:active {
+      transform: scale(0.95);
+    }
+
+    .btn img {
+      width: 20px;
+      height: 20px;
+    }
+
+    /* Texto estilo IG */
     .welcome-text {
       font-size: 28px;
-      color: #e06f8b;
       font-family: 'Great Vibes', cursive;
-      margin: 15px 0 10px 0;
+      color: #e06f8b;
+      margin: 10px 0;
       text-align: center;
       transition: opacity 0.5s ease;
+      padding: 0 10px;
     }
 
     .welcome-text.hidden {
@@ -136,32 +152,27 @@
       display: none;
     }
 
+    /* Confirmación tipo stories */
     .confirmation-section {
-      width: 100%;
-      max-width: 400px;
+      width: 90%;
       text-align: center;
       display: none;
       margin-top: 15px;
       animation: fadeInUp 1s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      align-items: center;
     }
 
     .confirmation-section.visible {
-      display: block;
+      display: flex;
     }
 
     .confirmation-text {
       font-size: 28px;
       font-family: 'Great Vibes', cursive;
       color: #c2185b;
-      margin-bottom: 15px;
-    }
-
-    .button-group-bottom {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 15px; /* menos separación */
-      margin-bottom: 10px; /* más arriba */
     }
 
     @keyframes fadeInUp {
@@ -169,10 +180,10 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Ajustes para móviles */
+    /* Ajustes para móviles tipo IG */
     @media screen and (max-width: 480px) {
       .welcome-text, .confirmation-text {
-        font-size: 24px;
+        font-size: 22px;
       }
 
       .btn {
@@ -181,35 +192,35 @@
       }
 
       .envelope-container {
-        min-height: 300px;
+        min-height: 60%;
       }
     }
   </style>
 </head>
 <body>
+  <div class="story-container">
 
-  <!-- Imagen 1.Laurren -->
-  <div class="envelope-container" id="envelopeContainer">
-    <div class="envelope" id="envelope">
-      <div class="front">
-        <img src="./1.Laurren.JPG" alt="Sobre cerrado">
-      </div>
-      <div class="card">
-        <img src="./2.Lauren.JPG" alt="Tarjeta">
+    <!-- Imagen 1.Laurren -->
+    <div class="envelope-container" id="envelopeContainer">
+      <div class="envelope" id="envelope">
+        <div class="front">
+          <img src="./1.Laurren.JPG" alt="Sobre cerrado">
+        </div>
+        <div class="card">
+          <img src="./2.Lauren.JPG" alt="Tarjeta">
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- Botón más arriba -->
-  <button class="btn" id="openBtn">📩 Abrir Invitación</button>
+    <!-- Botón más arriba -->
+    <button class="btn" id="openBtn">📩 Abrir Invitación</button>
 
-  <!-- Texto bonito debajo del botón -->
-  <div class="welcome-text" id="welcomeText">¡Estamos muy felices de que vengas a celebrar con nosotros!</div>
+    <!-- Texto bonito debajo del botón -->
+    <div class="welcome-text" id="welcomeText">¡Estamos muy felices de que vengas a celebrar con nosotros!</div>
 
-  <!-- Confirmación -->
-  <div class="confirmation-section" id="confirmationSection">
-    <div class="confirmation-text">Confirma tu asistencia</div>
-    <div class="button-group-bottom">
+    <!-- Confirmación -->
+    <div class="confirmation-section" id="confirmationSection">
+      <div class="confirmation-text">Confirma tu asistencia</div>
       <a href="https://wa.me/18296714033" target="_blank" class="btn">
         <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" alt="WhatsApp"> Confirmar
       </a>
@@ -218,6 +229,7 @@
         <img src="https://img.icons8.com/color/48/000000/google-maps-new.png" alt="Google Maps"> Ubicación
       </a>
     </div>
+
   </div>
 
   <script>
@@ -242,9 +254,9 @@
       }, 1200);
     });
   </script>
-
 </body>
 </html>
+
 
 
 
