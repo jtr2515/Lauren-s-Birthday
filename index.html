@@ -24,7 +24,7 @@
       flex-direction: column;
       align-items: center;
       margin-bottom: 15px;
-      min-height: 350px;
+      min-height: 450px;
       position: relative;
     }
 
@@ -64,7 +64,8 @@
 
     .front img, .card img {
       width: 100%;
-      height: auto;
+      height: 500px; /* desktop */
+      object-fit: cover;
       display: block;
       border-radius: 12px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.2);
@@ -88,13 +89,13 @@
     }
 
     #openBtn {
-      margin: 20px 0;
-      padding: 12px 20px;
+      margin: 40px 0 20px 0;
+      padding: 14px 24px;
       border: none;
       border-radius: 25px;
       background-color: #ff69b4;
       color: white;
-      font-size: 18px;
+      font-size: 20px;
       cursor: pointer;
       transition: background 0.3s;
       width: 80%;
@@ -146,12 +147,12 @@
     }
 
     .btn {
-      padding: 12px 20px;
+      padding: 14px 24px;
       border: none;
       border-radius: 25px;
       background-color: #ff69b4;
       color: white;
-      font-size: 18px;
+      font-size: 20px;
       cursor: pointer;
       transition: background 0.3s;
       width: 80%;
@@ -168,8 +169,8 @@
     }
 
     .btn img {
-      width: 20px;
-      height: 20px;
+      width: 24px;
+      height: 24px;
     }
 
     @keyframes fadeInUp {
@@ -178,17 +179,21 @@
     }
 
     @media screen and (max-width: 480px) {
+      .front img, .card img {
+        height: 90vh; /* casi pantalla completa */
+      }
+
       .welcome-text, .confirmation-text {
         font-size: 24px;
       }
 
       .btn {
-        font-size: 16px;
-        padding: 10px 16px;
+        font-size: 18px;
+        padding: 12px 20px;
       }
 
       .envelope-container {
-        min-height: 300px;
+        min-height: 90vh;
       }
     }
   </style>
@@ -217,7 +222,7 @@
   <div class="confirmation-section" id="confirmationSection">
     <div class="confirmation-text">Confirma tu asistencia</div>
     <div class="button-group-bottom">
-      <a href="https://wa.me/18296714033" target="_blank" class="btn">
+      <a href="https://wa.me/18296714033?text=¡Yo iré a celebrar con Lauren! 🎉" target="_blank" class="btn">
         <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" alt="WhatsApp"> Confirmar
       </a>
       <a href="https://www.google.com/maps?daddr=G6X5%2B6F5,+Santo+Domingo,+Dominican+Republic"
