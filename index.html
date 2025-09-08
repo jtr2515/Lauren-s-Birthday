@@ -9,47 +9,87 @@
     body {
       font-family: 'Great Vibes', cursive;
       margin: 0;
-      padding: 0;
-      background: #ffe4e1;
+      padding: 10px 5px;
+      background: linear-gradient(135deg, #ffe4e1, #fff8f0);
       display: flex;
-      justify-content: center;
-      align-items: center;
       flex-direction: column;
+      align-items: center;
       min-height: 100vh;
     }
 
-    .container {
-      text-align: center;
-      width: 90%;
+    .envelope-container {
+      width: 100%;
       max-width: 400px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 15px;
+      min-height: 350px;
       position: relative;
     }
 
-    h1 {
-      font-size: 2.2rem;
-      margin-bottom: 5px;
-    }
-
-    p {
-      font-size: 1.2rem;
-      margin-bottom: 20px;
-    }
-
-    /* Imagen inicial y principal */
-    #coverImage, #invitationImage {
+    .envelope {
       width: 100%;
-      border-radius: 20px;
-      margin: 0 auto 20px auto;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .bounce img {
+      animation: bounceEnvelope 1.2s ease;
+    }
+
+    @keyframes bounceEnvelope {
+      0% { transform: translateY(0) rotate(0deg); }
+      30% { transform: translateY(-20px) rotate(-4deg); }
+      50% { transform: translateY(0) rotate(4deg); }
+      70% { transform: translateY(-10px) rotate(-2deg); }
+      100% { transform: translateY(0) rotate(0deg); }
+    }
+
+    .front, .card {
+      position: relative;
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #fff8f0;
+    }
+
+    .front img, .card img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    .card img {
+      animation: none !important;
+      transition: none !important;
+    }
+
+    .card {
       display: none;
     }
 
-    #invitationImage {
-      max-width: 100%;
+    .open .front {
+      display: none;
     }
 
-    button {
+    .open .card {
+      display: block;
+    }
+
+    #openBtn {
+      margin: 20px 0;
       padding: 12px 20px;
-      margin: 8px 0;
       border: none;
       border-radius: 25px;
       background-color: #ff69b4;
@@ -61,77 +101,157 @@
       max-width: 300px;
     }
 
-    button:hover {
+    #openBtn:hover {
       background-color: #ff1493;
     }
 
-    /* Botones ocultos inicialmente */
-    #locationBtn, #confirmBtn {
+    .welcome-text {
+      font-size: 28px;
+      color: #e06f8b;
+      text-align: center;
+      margin: 15px 0 10px 0;
+      transition: opacity 0.5s ease;
+    }
+
+    .welcome-text.hidden {
+      opacity: 0;
       display: none;
-      position: relative;
-      top: -10px; /* un poco más arriba de la imagen */
+    }
+
+    .confirmation-section {
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+      display: none;
+      margin-top: 15px;
+      animation: fadeInUp 1s ease;
+    }
+
+    .confirmation-section.visible {
+      display: block;
+    }
+
+    .confirmation-text {
+      font-size: 28px;
+      color: #c2185b;
+      margin-bottom: 15px;
+    }
+
+    .button-group-bottom {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 10px;
+    }
+
+    .btn {
+      padding: 12px 20px;
+      border: none;
+      border-radius: 25px;
+      background-color: #ff69b4;
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
+      transition: background 0.3s;
+      width: 80%;
+      max-width: 300px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .btn:hover {
+      background-color: #ff1493;
+    }
+
+    .btn img {
+      width: 20px;
+      height: 20px;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media screen and (max-width: 480px) {
+      .welcome-text, .confirmation-text {
+        font-size: 24px;
+      }
+
+      .btn {
+        font-size: 16px;
+        padding: 10px 16px;
+      }
+
+      .envelope-container {
+        min-height: 300px;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>🎉 Cumpleaños de Lauren 🎉</h1>
-    <p>¡Estás invitado a celebrar con nosotros!</p>
 
-    <!-- Botón para abrir invitación -->
-    <button id="openBtn">Abrir invitación</button>
+  <!-- Imagen 1.Laurren -->
+  <div class="envelope-container" id="envelopeContainer">
+    <div class="envelope" id="envelope">
+      <div class="front">
+        <img src="./1.Laurren.JPG" alt="Sobre cerrado">
+      </div>
+      <div class="card">
+        <img src="./2.Lauren.JPG" alt="Tarjeta">
+      </div>
+    </div>
+  </div>
 
-    <!-- Imagen inicial tipo portada -->
-    <img src="1.Lauren.JPG" alt="Lauren Portada" id="coverImage">
+  <!-- Botón Abrir Invitación -->
+  <button id="openBtn">📩 Abrir Invitación</button>
 
-    <!-- Imagen principal de invitación -->
-    <img src="2.Lauren.JPG" alt="Lauren Invitación" id="invitationImage">
+  <!-- Texto bonito debajo del botón -->
+  <div class="welcome-text" id="welcomeText">¡Estamos muy felices de que vengas a celebrar con nosotros!</div>
 
-    <!-- Botones que aparecen después -->
-    <button id="locationBtn">📍 Ver Ubicación</button>
-    <button id="confirmBtn">✅ Confirmar Asistencia</button>
+  <!-- Confirmación -->
+  <div class="confirmation-section" id="confirmationSection">
+    <div class="confirmation-text">Confirma tu asistencia</div>
+    <div class="button-group-bottom">
+      <a href="https://wa.me/18296714033" target="_blank" class="btn">
+        <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" alt="WhatsApp"> Confirmar
+      </a>
+      <a href="https://www.google.com/maps?daddr=G6X5%2B6F5,+Santo+Domingo,+Dominican+Republic"
+         target="_blank" class="btn">
+        <img src="https://img.icons8.com/color/48/000000/google-maps-new.png" alt="Google Maps"> Ubicación
+      </a>
+    </div>
   </div>
 
   <script>
     const openBtn = document.getElementById('openBtn');
-    const coverImage = document.getElementById('coverImage');
-    const invitationImage = document.getElementById('invitationImage');
-    const locationBtn = document.getElementById('locationBtn');
-    const confirmBtn = document.getElementById('confirmBtn');
+    const confirmationSection = document.getElementById('confirmationSection');
+    const container = document.getElementById('envelopeContainer');
+    const welcomeText = document.getElementById('welcomeText');
+    const envelope = document.getElementById('envelope');
 
     openBtn.addEventListener('click', () => {
-      // Mostrar portada y principal
-      coverImage.style.display = 'block';
-      invitationImage.style.display = 'block';
+      envelope.classList.add('bounce');
 
-      // Mostrar botones
-      locationBtn.style.display = 'block';
-      confirmBtn.style.display = 'block';
+      setTimeout(() => {
+        container.classList.add('open');
+        confirmationSection.classList.add('visible');
+        welcomeText.classList.add('hidden');
+        openBtn.style.display = 'none';
+        envelope.classList.remove('bounce');
 
-      // Ocultar botón abrir
-      openBtn.style.display = 'none';
-
-      // Desplazamiento suave a la invitación
-      invitationImage.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    });
-
-    // Acción del botón ubicación
-    locationBtn.addEventListener('click', () => {
-      // Reemplaza el link con la ubicación de tu fiesta
-      window.open('https://www.google.com/maps/place/Tu+Ubicacion', '_blank');
-    });
-
-    // Acción del botón confirmar
-    confirmBtn.addEventListener('click', () => {
-      alert('¡Gracias! Tu asistencia ha sido confirmada 🎉');
-      // Aquí podrías redirigir a un formulario si quieres
-      // window.location.href = 'https://tuformulario.com';
+        // Scroll suave
+        confirmationSection.scrollIntoView({ behavior: 'smooth' });
+      }, 1200);
     });
   </script>
+
 </body>
 </html>
-
-
 
 
 
