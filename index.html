@@ -7,8 +7,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
   <style>
     :root{
-      --rosa:#f7a6b9; /* color exacto del sobre "From: Lauren" */
-      --sombra: 0 10px 28px rgba(247,166,185,.45);
+      --rosa:#f28ca2; /* color exacto del sobre */
+      --sombra: 0 10px 28px rgba(242,140,162,.45);
     }
     *{box-sizing:border-box;}
     body{
@@ -26,8 +26,25 @@
     }
     .envelope{ width:100%; border-radius:14px; box-shadow:0 8px 20px rgba(0,0,0,.12); overflow:hidden; background:#fff8f0; }
     .front, .card{ width:100%; position:relative; }
-    .front img, .card img{ width:100%; height:450px; object-fit:cover; display:block; }
-    .card img{ animation:none!important; transition:none!important; }
+
+    /* 📌 Portada más pequeña pero cubriendo todo el frame */
+    .front img{
+      width:100%;
+      height:auto;
+      max-height:360px;   /* ✅ controla altura */
+      object-fit:cover;   /* ✅ ahora cubre todo el ancho del frame */
+      display:block;
+    }
+
+    .card img{ 
+      width:100%; 
+      height:auto;        
+      object-fit:contain; /* la tarjeta sigue viéndose completa */
+      display:block; 
+      animation:none!important; 
+      transition:none!important; 
+    }
+
     .card{ display:none; }
     .open .front{ display:none; }
     .open .card{ display:block; }
@@ -85,7 +102,7 @@
       box-shadow:var(--sombra);
       transition:transform .12s ease, filter .25s ease, box-shadow .25s ease;
     }
-    .btn:hover{ filter:brightness(1.08); box-shadow:0 14px 34px rgba(247,166,185,.55); }
+    .btn:hover{ filter:brightness(1.08); box-shadow:0 14px 34px rgba(242,140,162,.55); }
     .btn:active{ transform:scale(.98) }
     .btn img{ width:30px; height:30px; }
 
@@ -93,7 +110,10 @@
 
     /* RESPONSIVE */
     @media (max-width:480px){
-      .front img, .card img{ height:320px; }
+      .front img{ 
+        max-height:280px; /* ✅ portada más pequeña en móviles */
+      }
+      .card img{ height:auto; }
       #openBtn{ font-size:21px; padding:15px 26px; }
       .mensaje-inicial{ font-size:26px; }
       .confirmation-text{ font-size:28px; }
@@ -170,6 +190,14 @@
   </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
 
 
 
