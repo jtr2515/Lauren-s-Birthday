@@ -189,10 +189,8 @@
     const mensaje = encodeURIComponent('¡Hola! Me gustaría confirmar mi asistencia al evento "Soy Mujer Latina".');
     confirmBtn.href = `https://wa.me/${telefono}?text=${mensaje}`;
     
-    // **ENLACE DE UBICACIÓN PERMANENTE**
-    // Usamos el formato "q=" con la dirección codificada para crear un enlace estático y fiable.
-    const eventAddress = '300 Palm Ave, Hialeah, Florida 33010-4716';
-    locationBtn.href = `https://support.google.com/maps/answer/15437054?hl=en&co=GENIE.Platform%3DAndroid2${encodeURIComponent(eventAddress)}`;
+    // **ENLACE DE UBICACIÓN PERMANENTE ACTUALIZADO**
+    locationBtn.href = 'https://maps.app.goo.gl/m8my6ztvJCRF8KTEA?g_st=ac';
 
     // Abrir invitación
     openBtn.addEventListener('click', () => {
