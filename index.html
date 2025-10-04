@@ -22,11 +22,10 @@
     }
     h1, .confirmation-text{ font-family:'Great Vibes', cursive; color:#c2185b; /* Usar color rosa fuerte para énfasis */ }
     
-    /* CONTENEDOR SOBRE / TARJETA */
+    /* CONTENEDOR SOBRE / TARJETA (MAXIMIZED SIZE) */
     .envelope-container{
       width:100%; 
-      /* CAMBIO CLAVE: Aumentamos el tamaño máximo para que la tarjeta sea mucho más grande */
-      max-width:550px; 
+      max-width:550px; /* Large size for desktop/tablet */
       display:flex; flex-direction:column; align-items:center;
       margin:10px auto 18px auto; position:relative;
       border-radius:14px; 
@@ -36,21 +35,21 @@
     .envelope{ width:100%; background:#fff8f0; } 
     .front, .card{ width:100%; position:relative; }
 
-    /* Portada (1.Lauren.JPG) - El height:auto asegura que el contenedor coincida con la imagen */
+    /* Portada (1.Lauren.JPG) */
     .front img{
       width:100%;
       height:auto; 
-      max-height: 700px; /* Se agregó un max-height para evitar que sea demasiado alto en pantallas grandes */
+      max-height: 700px; 
       object-fit:contain; 
       object-position: center center; 
       display:block;
     }
 
-    /* La imagen Mariel.jpg - Más ancha */
+    /* La imagen Mariel.jpg (Default: WIDER for large screens) */
     .card img{ 
       width:100%; 
       height:auto;        
-      object-fit:cover; 
+      object-fit:cover; /* This makes it look WIDER on large screens */
       display:block; 
       animation:none!important; 
       transition:none!important; 
@@ -74,7 +73,6 @@
     #openBtn{
       margin:36px 0 14px 0;
       padding:16px 28px; width:86%; 
-      /* Aumentamos el max-width del botón para que coincida con el nuevo tamaño del contenedor */
       max-width:480px; 
       border:none; border-radius:30px;
       font-size:22px; color:#fff; cursor:pointer;
@@ -88,7 +86,6 @@
     /* SECCIÓN CONFIRMACIÓN / BOTONES */
     .confirmation-section{
       width:100%; 
-      /* Aumentamos el max-width para que coincida con el nuevo tamaño del contenedor */
       max-width:550px; 
       text-align:center;
       display:none; animation:fadeInUp .8s ease both; margin-top:8px;
@@ -104,7 +101,6 @@
     .btn{
       display:flex; align-items:center; justify-content:center; gap:10px;
       width:86%; 
-      /* Aumentamos el max-width de los botones */
       max-width:480px; 
       padding:18px 32px;
       border:none; border-radius:34px;
@@ -120,9 +116,9 @@
 
     @keyframes fadeInUp{ from{opacity:0; transform:translateY(18px)} to{opacity:1; transform:translateY(0)} }
 
-    /* RESPONSIVE */
+    /* RESPONSIVE (MOBILE VIEW) */
     @media (max-width:480px){
-      /* En móvil, volvemos a un tamaño más pequeño para que se ajuste a la pantalla */
+      /* Reduce size for optimal phone fit */
       .envelope-container, .confirmation-section {
           max-width: 420px;
       }
@@ -132,6 +128,13 @@
       .btn, #openBtn {
           max-width: 340px;
       }
+      
+      /* KEY MOBILE OPTIMIZATION for Mariel.jpg */
+      .card img {
+          object-fit: contain !important; /* Forces the entire image to be visible on small screens */
+      }
+
+      /* Button/text sizes */
       #openBtn{ font-size:21px; padding:15px 26px; }
       .confirmation-text{ font-size:32px; }
       .btn{ font-size:24px; padding:16px 28px; }
@@ -204,19 +207,3 @@
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
