@@ -6,7 +6,7 @@
   <title>Invitación Soy Mujer Latina</title>
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   <style>
-    /* Colores basados en la imagen Mariel.JPG: Rosado/Coral, texto oscuro */
+    /* Colores basados en la imagen Mariel.jpg: Rosado/Coral, texto oscuro */
     :root{
       --coral:#e69999; /* color similar al acento del diseño */
       --sombra: 0 10px 28px rgba(230, 153, 153, .45);
@@ -185,12 +185,12 @@
     const locationBtn = document.getElementById('locationBtn');
 
     // CONFIGURACIÓN DINÁMICA DE ENLACES
-    const telefono = '17869927867'; // Nuevo número de WhatsApp: 786-992-7867
+    const telefono = '17869927867'; // Número de WhatsApp
     const mensaje = encodeURIComponent('¡Hola! Me gustaría confirmar mi asistencia al evento "Soy Mujer Latina".');
     confirmBtn.href = `https://wa.me/${telefono}?text=${mensaje}`;
     
-    // Ubicación del evento Mariel.JPG: 300 Palm Ave, Hialeah, Florida
-    locationBtn.href = 'https://maps.app.goo.gl/QpM477KxN1XzXg2E7'; // Enlace a 300 Palm Ave, Hialeah, FL
+    // Enlace de Google Maps actualizado
+    locationBtn.href = 'https://maps.app.goo.gl/QpM477KxN1XzXg2E73';
 
     // Abrir invitación
     openBtn.addEventListener('click', () => {
@@ -207,6 +207,3 @@
   </script>
 </body>
 </html>
-
-
-
