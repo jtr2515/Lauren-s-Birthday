@@ -3,43 +3,54 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Invitación Cumpleaños Lauren</title>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+  <title>Invitación Soy Mujer Latina</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   <style>
+    /* Colores basados en la imagen Mariel.jpg: Rosado/Coral, texto oscuro */
     :root{
-      --rosa:#f28ca2; /* color exacto del sobre */
-      --sombra: 0 10px 28px rgba(242,140,162,.45);
+      --coral:#e69999; /* color similar al acento del diseño */
+      --sombra: 0 10px 28px rgba(230, 153, 153, .45);
+      --texto-oscuro: #584b42; /* un marrón oscuro para el texto principal */
     }
     *{box-sizing:border-box;}
     body{
       margin:0; padding:10px 6px;
-      font-family:'Great Vibes',cursive;
-      background:linear-gradient(135deg,#ffe4e1,#fff8f0);
+      font-family:'Playfair Display', serif; /* Fuente más legible para el cuerpo */
+      background:linear-gradient(135deg,#fffbf8,#fff8f0); /* Fondo muy claro/beige suave */
       display:flex; flex-direction:column; align-items:center;
-      min-height:100vh; color:#c2185b;
+      min-height:100vh; color:var(--texto-oscuro);
     }
-
+    h1, .confirmation-text{ font-family:'Great Vibes', cursive; color:#c2185b; /* Usar color rosa fuerte para énfasis */ }
+    
     /* CONTENEDOR SOBRE / TARJETA */
     .envelope-container{
-      width:100%; max-width:420px; display:flex; flex-direction:column; align-items:center;
+      width:100%; 
+      /* CAMBIO CLAVE: Aumentamos el tamaño máximo para que la tarjeta sea mucho más grande */
+      max-width:550px; 
+      display:flex; flex-direction:column; align-items:center;
       margin:10px auto 18px auto; position:relative;
+      border-radius:14px; 
+      box-shadow:0 8px 20px rgba(0,0,0,.12);
+      overflow:hidden; 
     }
-    .envelope{ width:100%; border-radius:14px; box-shadow:0 8px 20px rgba(0,0,0,.12); overflow:hidden; background:#fff8f0; }
+    .envelope{ width:100%; background:#fff8f0; } 
     .front, .card{ width:100%; position:relative; }
 
-    /* 📌 Portada más pequeña pero cubriendo todo el frame */
+    /* Portada (1.Lauren.JPG) - El height:auto asegura que el contenedor coincida con la imagen */
     .front img{
       width:100%;
-      height:auto;
-      max-height:360px;   /* ✅ controla altura */
-      object-fit:cover;   /* ✅ ahora cubre todo el ancho del frame */
+      height:auto; 
+      max-height: 700px; /* Se agregó un max-height para evitar que sea demasiado alto en pantallas grandes */
+      object-fit:contain; 
+      object-position: center center; 
       display:block;
     }
 
+    /* La imagen Mariel.jpg - Más ancha */
     .card img{ 
       width:100%; 
       height:auto;        
-      object-fit:contain; /* la tarjeta sigue viéndose completa */
+      object-fit:cover; 
       display:block; 
       animation:none!important; 
       transition:none!important; 
@@ -59,33 +70,31 @@
       100%{transform:translateY(0) rotate(0)}
     }
 
-    /* BOTÓN ABRIR */
+    /* BOTÓN ABRIR - Estilo coral/rosado suave */
     #openBtn{
       margin:36px 0 14px 0;
-      padding:16px 28px; width:86%; max-width:340px;
+      padding:16px 28px; width:86%; 
+      /* Aumentamos el max-width del botón para que coincida con el nuevo tamaño del contenedor */
+      max-width:480px; 
       border:none; border-radius:30px;
       font-size:22px; color:#fff; cursor:pointer;
-      background:var(--rosa);
+      background:var(--coral);
       box-shadow:var(--sombra);
       transition:transform .15s ease, filter .25s ease;
     }
     #openBtn:hover{ filter:brightness(1.06) }
     #openBtn:active{ transform:scale(.98) }
 
-    /* MENSAJE FESTIVO inicial debajo de la imagen */
-    .mensaje-inicial{
-      text-align:center; color:#c2185b;
-      font-size:28px; line-height:1.35;
-      margin:12px 8px;
-    }
-
     /* SECCIÓN CONFIRMACIÓN / BOTONES */
     .confirmation-section{
-      width:100%; max-width:420px; text-align:center;
+      width:100%; 
+      /* Aumentamos el max-width para que coincida con el nuevo tamaño del contenedor */
+      max-width:550px; 
+      text-align:center;
       display:none; animation:fadeInUp .8s ease both; margin-top:8px;
     }
     .confirmation-section.visible{ display:block; }
-    .confirmation-text{ font-size:30px; margin:10px 0 8px 0; color:#b0124a; }
+    .confirmation-text{ font-size:36px; margin:20px 0 8px 0; color:var(--texto-oscuro); } 
     .button-group-bottom{
       display:flex; flex-direction:column; align-items:center;
       gap:18px; margin:14px 0 18px; width:100%;
@@ -94,15 +103,18 @@
     /* BOTONES PRINCIPALES IGUAL AL SOBRE */
     .btn{
       display:flex; align-items:center; justify-content:center; gap:10px;
-      width:86%; max-width:340px; padding:18px 32px;
+      width:86%; 
+      /* Aumentamos el max-width de los botones */
+      max-width:480px; 
+      padding:18px 32px;
       border:none; border-radius:34px;
       color:#fff; text-decoration:none;
       font-size:26px; font-weight:700; cursor:pointer;
-      background:var(--rosa);
+      background:var(--coral); 
       box-shadow:var(--sombra);
       transition:transform .12s ease, filter .25s ease, box-shadow .25s ease;
     }
-    .btn:hover{ filter:brightness(1.08); box-shadow:0 14px 34px rgba(242,140,162,.55); }
+    .btn:hover{ filter:brightness(1.08); box-shadow:0 14px 34px rgba(230, 153, 153, .55); }
     .btn:active{ transform:scale(.98) }
     .btn img{ width:30px; height:30px; }
 
@@ -110,13 +122,18 @@
 
     /* RESPONSIVE */
     @media (max-width:480px){
-      .front img{ 
-        max-height:280px; /* ✅ portada más pequeña en móviles */
+      /* En móvil, volvemos a un tamaño más pequeño para que se ajuste a la pantalla */
+      .envelope-container, .confirmation-section {
+          max-width: 420px;
       }
-      .card img{ height:auto; }
+      .front img{ 
+        max-height:420px; 
+      }
+      .btn, #openBtn {
+          max-width: 340px;
+      }
       #openBtn{ font-size:21px; padding:15px 26px; }
-      .mensaje-inicial{ font-size:26px; }
-      .confirmation-text{ font-size:28px; }
+      .confirmation-text{ font-size:32px; }
       .btn{ font-size:24px; padding:16px 28px; }
       .btn img{ width:28px; height:28px; }
     }
@@ -130,32 +147,28 @@
   </style>
 </head>
 <body>
-  <!-- SOBRE / TARJETA -->
   <div class="envelope-container" id="envelopeContainer">
     <div class="envelope bounce" id="envelope">
       <div class="front">
-        <img id="frontImg" src="./1.Lauren.JPG" alt="Sobre cerrado" onerror="this.onerror=null; this.src='./1.Laurren.JPG';">
+        <img id="frontImg" src="./1.Lauren.JPG" alt="Sobre cerrado">
       </div>
       <div class="card">
-        <img id="cardImg" src="./2.Lauren.JPG" alt="Tarjeta" onerror="this.onerror=null; this.src='./2.Laurren.JPG';">
+        <img id="cardImg" src="./Mariel.jpg" alt="Invitación Soy Mujer Latina">
       </div>
     </div>
-    <!-- MENSAJE INICIAL -->
-    <div class="mensaje-inicial" id="mensajeInicial"></div>
   </div>
 
-  <!-- BOTÓN ABRIR INVITACIÓN -->
-  <button id="openBtn">📩 Abrir invitación</button>
+  <button id="openBtn">💌 Ver invitación</button>
 
-  <!-- SECCIÓN CONFIRMACIÓN + BOTONES (aparece tras abrir) -->
   <div class="confirmation-section" id="confirmationSection">
-    <div class="confirmation-text">Confirma tu asistencia</div>
+    <div class="confirmation-text">¡Sé puntual, te esperamos!</div>
+    <p style="margin-top: -15px; font-size: 20px; font-style: italic; color: var(--texto-oscuro);">Confirma tu asistencia ahora:</p>
     <div class="button-group-bottom">
       <a class="btn" id="confirmBtn" target="_blank">
-        <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" alt="WhatsApp"> Confirmar
+        <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" alt="WhatsApp"> Confirmar Asistencia
       </a>
       <a class="btn" id="locationBtn" target="_blank">
-        <img src="https://img.icons8.com/color/48/000000/google-maps-new.png" alt="Google Maps"> Ubicación
+        <img src="https://img.icons8.com/color/48/000000/google-maps-new.png" alt="Google Maps"> Ver Ubicación
       </a>
     </div>
   </div>
@@ -167,13 +180,14 @@
     const confirmationSection = document.getElementById('confirmationSection');
     const confirmBtn = document.getElementById('confirmBtn');
     const locationBtn = document.getElementById('locationBtn');
-    const mensajeInicial = document.getElementById('mensajeInicial');
 
-    // Configura enlaces dinámicos
-    const telefono = '18296714033';
-    const mensaje = encodeURIComponent('¡Yo iré a celebrar con Lauren! 🎉');
+    // CONFIGURACIÓN DINÁMICA DE ENLACES
+    const telefono = '17869927867'; // Nuevo número de WhatsApp: 786-992-7867
+    const mensaje = encodeURIComponent('¡Hola! Me gustaría confirmar mi asistencia al evento "Soy Mujer Latina".');
     confirmBtn.href = `https://wa.me/${telefono}?text=${mensaje}`;
-    locationBtn.href = 'https://www.google.com/maps?daddr=G6X5%2B6F5,+Santo+Domingo,+Dominican+Republic';
+    
+    // Ubicación del evento Mariel.jpg: 300 Palm Ave, Hialeah, Florida
+    locationBtn.href = 'https://maps.app.goo.gl/QpM477KxN1XzXg2E7'; // Enlace a 300 Palm Ave, Hialeah, FL
 
     // Abrir invitación
     openBtn.addEventListener('click', () => {
@@ -182,16 +196,14 @@
         container.classList.add('open');
         confirmationSection.classList.add('visible');
         openBtn.style.display = 'none';
-        mensajeInicial.style.display = 'none'; // ocultar mensaje inicial
         envelope.classList.remove('bounce');
+        // Desplazamiento suave hacia la sección de confirmación
         confirmationSection.scrollIntoView({ behavior:'smooth', block:'center' });
-      }, 1200);
+      }, 1200); // 1.2 segundos para la animación
     });
   </script>
 </body>
 </html>
-
-
 
 
 
